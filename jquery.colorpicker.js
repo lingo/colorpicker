@@ -2069,7 +2069,11 @@
 			}
 
 			if (this.element[0].nodeName.toLowerCase() === 'input' || !this.inline) {
-				that._setColor(that.element.val());
+				var color = that.element.val();
+				if (that.options.color) {
+					color = that.options.color;
+				}
+				that._setColor(color);
 
 				this._callback('init');
 
