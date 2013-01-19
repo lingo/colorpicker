@@ -2253,7 +2253,12 @@
 				layout_parts;
 
 			// Set color based on element?
-			that._setColor(that.inline? that.options.color : that.element.val());
+			var val = that.element.val();
+			if (!val) {
+				that._setColor(that.options.color);
+			} else {
+				that._setColor(that.inline? that.options.color : val);
+			}
 
 			// Determine the parts to include in this colorpicker
 			if (typeof that.options.parts === 'string') {
