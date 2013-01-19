@@ -387,6 +387,15 @@
 					m[3] / 255).setAlpha(parseFloat(m[4]));
             }
 
+            // hsla(r,g,b,a) with percentage values
+            m = /^hsla?\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)$/.exec(color);
+            if (m) {
+				return (new Color()).setHSL(
+					m[1] / 360,
+					m[2] / 100,
+					m[3] / 100).setAlpha(parseFloat(m[4]));
+            }
+
             // rgba(r%,g%,b%,a%)
             m = /^rgba?\(\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)$/.exec(color);
             if (m) {
